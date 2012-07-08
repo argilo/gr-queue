@@ -104,7 +104,7 @@ howto_square2_ff::work (int noutput_items,
       } else {
         if (sample == 0) {
           zeros_so_far.at(input)++;
-          if (zeros_so_far.at(input) == 160) {
+          if (zeros_so_far.at(input) == 4000) {
             // This input has been silent for a while.  Stop queueing it.
             printf("Stop queueing segment.\n");
             current_channel_queue.at(input) = NULL;
