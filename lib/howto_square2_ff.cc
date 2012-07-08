@@ -52,7 +52,7 @@ howto_make_square2_ff ()
  * only 1 input and 1 output.
  */
 static const int MIN_IN = 1;	// mininum number of input streams
-static const int MAX_IN = 1;	// maximum number of input streams
+static const int MAX_IN = -1;	// maximum number of input streams
 static const int MIN_OUT = 1;	// minimum number of output streams
 static const int MAX_OUT = 1;	// maximum number of output streams
 

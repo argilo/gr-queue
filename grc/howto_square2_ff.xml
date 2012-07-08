@@ -6,9 +6,18 @@
   <import>import howto</import>
   <make>howto.square2_ff()</make>
 
+  <param>
+    <name>Num Inputs</name>
+    <key>num_inputs</key>
+    <value>1</value>
+    <type>int</type>
+  </param>
+  <check>$num_inputs &gt; 1</check>
+
   <sink>
     <name>in</name>
     <type>float</type>
+    <nports>$num_inputs</nports>
   </sink>
 
   <source>
