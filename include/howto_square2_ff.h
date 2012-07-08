@@ -24,6 +24,9 @@
 
 #include <howto_api.h>
 #include <gr_sync_block.h>
+#include <vector>
+#include <queue>
+using namespace std;
 
 class howto_square2_ff;
 
@@ -64,6 +67,10 @@ private:
   friend HOWTO_API howto_square2_ff_sptr howto_make_square2_ff ();
 
   howto_square2_ff ();  	// private constructor
+
+  vector<int> zeros_so_far;
+  vector<queue<float>*> current_channel_queue;
+  queue<queue<float>*> queued_audio_segments;  
 
  public:
   ~howto_square2_ff ();	// public destructor

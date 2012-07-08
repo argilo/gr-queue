@@ -31,6 +31,7 @@
 
 #include <howto_square2_ff.h>
 #include <gr_io_signature.h>
+#include <stdio.h>
 
 /*
  * Create a new instance of howto_square2_ff and return
@@ -80,11 +81,58 @@ howto_square2_ff::work (int noutput_items,
 			gr_vector_const_void_star &input_items,
 			gr_vector_void_star &output_items)
 {
-  const float *in = (const float *) input_items[0];
+  int num_inputs = input_items.size();
+
+  if (num_inputs != zeros_so_far.size()) {
+    zeros_so_far.resize(num_inputs, -1);
+    current_channel_queue.resize(num_inputs, NULL);
+  }
+
   float *out = (float *) output_items[0];
 
-  for (int i = 0; i < noutput_items; i++){
-    out[i] = in[i] * in[i];
+  for (int i = 0; i < noutput_items; i++) {
+    for (int input = 0; input < num_inputs; input++) {
+      float sample = ((const float *) input_items[input])[i];
+      if (current_channel_queue.at(input) == NULL) {
+        if (sample != 0) {
+          // We've got a new audio segment.  Start queueing it.
+          printf("Start queueing segment.\n");
+          current_channel_queue.at(input) = new queue<float>;
+          queued_audio_segments.push(current_channel_queue.at(input));
+          zeros_so_far.at(input) = 0;
+        }
+      } else {
+        if (sample == 0) {
+          zeros_so_far.at(input)++;
+          if (zeros_so_far.at(input) == 160) {
+            // This input has been silent for a while.  Stop queueing it.
+            printf("Stop queueing segment.\n");
+            current_channel_queue.at(input) = NULL;
+          }
+        } else {
+          zeros_so_far.at(input) = 0;
+        }
+      }
+
+      if (current_channel_queue.at(input) != NULL) {
+        current_channel_queue.at(input)->push(sample);
+      }
+    }
+
+    if (!queued_audio_segments.empty()) {
+      queue<float> *current_audio_segment = queued_audio_segments.front();
+      if (!current_audio_segment->empty()) {
+        out[i] = current_audio_segment->front();
+        current_audio_segment->pop();
+      } else {
+        // We reached the end of the current segment.  Throw it out.
+        printf("End of segment.\n");
+        delete current_audio_segment;
+        queued_audio_segments.pop();
+      }
+    } else {
+      out[i] = 0;
+    }
   }
 
   // Tell runtime system how many output items we produced.
