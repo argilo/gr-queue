@@ -22,7 +22,6 @@
 ########################################################################
 install(FILES
     howto_api.h
-    howto_square_ff.h
     howto_square2_ff.h
     DESTINATION include/howto
 )

@@ -96,9 +96,10 @@ howto_square2_ff::work (int noutput_items,
       if (current_channel_queue.at(input) == NULL) {
         if (sample != 0) {
           // We've got a new audio segment.  Start queueing it.
-          printf("Start queueing segment.\n");
+          printf("Start queueing segment. ");
           current_channel_queue.at(input) = new queue<float>;
           queued_audio_segments.push(current_channel_queue.at(input));
+          printf("Depth: %ld\n", queued_audio_segments.size());
           zeros_so_far.at(input) = 0;
         }
       } else {
@@ -126,9 +127,10 @@ howto_square2_ff::work (int noutput_items,
         current_audio_segment->pop();
       } else {
         // We reached the end of the current segment.  Throw it out.
-        printf("End of segment.\n");
+        printf("End of segment. ");
         delete current_audio_segment;
         queued_audio_segments.pop();
+        printf("Depth: %ld\n", queued_audio_segments.size());
       }
     } else {
       out[i] = 0;
