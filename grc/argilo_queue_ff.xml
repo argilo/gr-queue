@@ -9,7 +9,7 @@
   <param>
     <name>Num Inputs</name>
     <key>num_inputs</key>
-    <value>1</value>
+    <value>2</value>
     <type>int</type>
   </param>
   <check>$num_inputs &gt; 1</check>
