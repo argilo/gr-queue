@@ -18,6 +18,6 @@
 # Boston, MA 02110-1301, USA.
 
 install(FILES
-    howto_square2_ff.xml
+    argilo_queue_ff.xml
     DESTINATION share/gnuradio/grc/blocks
 )

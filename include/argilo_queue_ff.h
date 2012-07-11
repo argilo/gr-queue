@@ -19,16 +19,16 @@
  * the Free Software Foundation, Inc., 51 Franklin Street,
  * Boston, MA 02110-1301, USA.
  */
-#ifndef INCLUDED_HOWTO_SQUARE2_FF_H
-#define INCLUDED_HOWTO_SQUARE2_FF_H
+#ifndef INCLUDED_ARGILO_QUEUE_FF_H
+#define INCLUDED_ARGILO_QUEUE_FF_H
 
-#include <howto_api.h>
+#include <argilo_api.h>
 #include <gr_sync_block.h>
 #include <vector>
 #include <queue>
 using namespace std;
 
-class howto_square2_ff;
+class argilo_queue_ff;
 
 /*
  * We use boost::shared_ptr's instead of raw pointers for all access
@@ -41,39 +41,39 @@ class howto_square2_ff;
  *
  * As a convention, the _sptr suffix indicates a boost::shared_ptr
  */
-typedef boost::shared_ptr<howto_square2_ff> howto_square2_ff_sptr;
+typedef boost::shared_ptr<argilo_queue_ff> argilo_queue_ff_sptr;
 
 /*!
- * \brief Return a shared_ptr to a new instance of howto_square2_ff.
+ * \brief Return a shared_ptr to a new instance of argilo_queue_ff.
  *
- * To avoid accidental use of raw pointers, howto_square2_ff's
- * constructor is private.  howto_make_square2_ff is the public
+ * To avoid accidental use of raw pointers, argilo_queue_ff's
+ * constructor is private.  argilo_make_queue_ff is the public
  * interface for creating new instances.
  */
-HOWTO_API howto_square2_ff_sptr howto_make_square2_ff ();
+ARGILO_API argilo_queue_ff_sptr argilo_make_queue_ff ();
 
 /*!
- * \brief square2 a stream of floats.
+ * \brief queue float multiple simultaneous floats into a single stream
  * \ingroup block
  *
  * This uses the preferred technique: subclassing gr_sync_block.
  */
-class HOWTO_API howto_square2_ff : public gr_sync_block
+class ARGILO_API argilo_queue_ff : public gr_sync_block
 {
 private:
-  // The friend declaration allows howto_make_square2_ff to
+  // The friend declaration allows argilo_make_queue_ff to
   // access the private constructor.
 
-  friend HOWTO_API howto_square2_ff_sptr howto_make_square2_ff ();
+  friend ARGILO_API argilo_queue_ff_sptr argilo_make_queue_ff ();
 
-  howto_square2_ff ();  	// private constructor
+  argilo_queue_ff ();  	// private constructor
 
   vector<int> zeros_so_far;
   vector<queue<float>*> current_channel_queue;
   queue<queue<float>*> queued_audio_segments;  
 
  public:
-  ~howto_square2_ff ();	// public destructor
+  ~argilo_queue_ff ();	// public destructor
 
   // Where all the action really happens
 
@@ -82,4 +82,4 @@ private:
 	    gr_vector_void_star &output_items);
 };
 
-#endif /* INCLUDED_HOWTO_SQUARE2_FF_H */
+#endif /* INCLUDED_ARGILO_QUEUE_FF_H */

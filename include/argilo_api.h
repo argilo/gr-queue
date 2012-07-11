@@ -19,15 +19,15 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef INCLUDED_HOWTO_API_H
-#define INCLUDED_HOWTO_API_H
+#ifndef INCLUDED_ARGILO_API_H
+#define INCLUDED_ARGILO_API_H
 
 #include <gruel/attributes.h>
 
-#ifdef gnuradio_howto_EXPORTS
-#  define HOWTO_API __GR_ATTR_EXPORT
+#ifdef gnuradio_argilo_EXPORTS
+#  define ARGILO_API __GR_ATTR_EXPORT
 #else
-#  define HOWTO_API __GR_ATTR_IMPORT
+#  define ARGILO_API __GR_ATTR_IMPORT
 #endif
 
-#endif /* INCLUDED_HOWTO_API_H */
+#endif /* INCLUDED_ARGILO_API_H */

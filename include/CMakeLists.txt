@@ -21,7 +21,7 @@
 # Install public header files
 ########################################################################
 install(FILES
-    howto_api.h
-    howto_square2_ff.h
-    DESTINATION include/howto
+    argilo_api.h
+    argilo_queue_ff.h
+    DESTINATION include/argilo
 )

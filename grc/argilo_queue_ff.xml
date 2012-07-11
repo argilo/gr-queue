@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <block>
-  <name>Square2</name>
-  <key>howto_square2_ff</key>
-  <category>HOWTO</category>
-  <import>import howto</import>
-  <make>howto.square2_ff()</make>
+  <name>Queue</name>
+  <key>argilo_queue_ff</key>
+  <category>Operators</category>
+  <import>import argilo</import>
+  <make>argilo.queue_ff()</make>
 
   <param>
     <name>Num Inputs</name>
