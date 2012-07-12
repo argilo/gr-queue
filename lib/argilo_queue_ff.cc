@@ -38,9 +38,9 @@
  * a boost shared_ptr.  This is effectively the public constructor.
  */
 argilo_queue_ff_sptr
-argilo_make_queue_ff ()
+argilo_make_queue_ff (int zeros)
 {
-  return gnuradio::get_initial_sptr(new argilo_queue_ff ());
+  return gnuradio::get_initial_sptr(new argilo_queue_ff (zeros));
 }
 
 /*
@@ -60,12 +60,12 @@ static const int MAX_OUT = 1;	// maximum number of output streams
 /*
  * The private constructor
  */
-argilo_queue_ff::argilo_queue_ff ()
+argilo_queue_ff::argilo_queue_ff (int zeros)
   : gr_sync_block ("queue_ff",
 		   gr_make_io_signature (MIN_IN, MAX_IN, sizeof (float)),
 		   gr_make_io_signature (MIN_OUT, MAX_OUT, sizeof (float)))
 {
-  // nothing else required in this example
+  m_zeros = zeros;
 }
 
 /*
@@ -105,7 +105,7 @@ argilo_queue_ff::work (int noutput_items,
       } else {
         if (sample == 0) {
           zeros_so_far.at(input)++;
-          if (zeros_so_far.at(input) == 4000) {
+          if (zeros_so_far.at(input) == m_zeros) {
             // This input has been silent for a while.  Stop queueing it.
             printf("Stop queueing segment.\n");
             current_channel_queue.at(input) = NULL;

@@ -4,7 +4,7 @@
   <key>argilo_queue_ff</key>
   <category>Operators</category>
   <import>import argilo</import>
-  <make>argilo.queue_ff()</make>
+  <make>argilo.queue_ff($zeros)</make>
 
   <param>
     <name>Num Inputs</name>
@@ -12,7 +12,14 @@
     <value>2</value>
     <type>int</type>
   </param>
+  <param>
+    <name>Trailing Zeros</name>
+    <key>zeros</key>
+    <value>4000</value>
+    <type>int</type>
+  </param>
   <check>$num_inputs &gt; 1</check>
+  <check>$zeros &gt; 0</check>
 
   <sink>
     <name>in</name>

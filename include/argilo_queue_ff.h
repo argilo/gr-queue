@@ -50,7 +50,7 @@ typedef boost::shared_ptr<argilo_queue_ff> argilo_queue_ff_sptr;
  * constructor is private.  argilo_make_queue_ff is the public
  * interface for creating new instances.
  */
-ARGILO_API argilo_queue_ff_sptr argilo_make_queue_ff ();
+ARGILO_API argilo_queue_ff_sptr argilo_make_queue_ff (int zeros = 4000);
 
 /*!
  * \brief queue float multiple simultaneous floats into a single stream
@@ -64,13 +64,14 @@ private:
   // The friend declaration allows argilo_make_queue_ff to
   // access the private constructor.
 
-  friend ARGILO_API argilo_queue_ff_sptr argilo_make_queue_ff ();
+  friend ARGILO_API argilo_queue_ff_sptr argilo_make_queue_ff (int zeros);
 
-  argilo_queue_ff ();  	// private constructor
+  argilo_queue_ff (int zeros);  // private constructor
 
   vector<int> zeros_so_far;
   vector<queue<float>*> current_channel_queue;
   queue<queue<float>*> queued_audio_segments;  
+  int m_zeros; 
 
  public:
   ~argilo_queue_ff ();	// public destructor

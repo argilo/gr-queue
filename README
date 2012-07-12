@@ -34,7 +34,8 @@ considered active and its samples will start flowing through to the
 output.  If non-zero samples start to arrive on other channels, they
 will be queued for playback once the first channel returns to zero.
 The block will consider a transmission finished once it receives a
-number of consecutive zero samples on an active channel.
+number of consecutive zero samples on an active channel.  This number
+is configurable, with the default being 4000.
 
 Transmissions are played back in order of when they began.
 
