@@ -30,7 +30,7 @@
 #endif
 
 #include <argilo_queue_ff.h>
-#include <gr_io_signature.h>
+#include <gnuradio/io_signature.h>
 #include <stdio.h>
 
 /*
@@ -61,9 +61,9 @@ static const int MAX_OUT = 1;	// maximum number of output streams
  * The private constructor
  */
 argilo_queue_ff::argilo_queue_ff (int zeros)
-  : gr_sync_block ("queue_ff",
-		   gr_make_io_signature (MIN_IN, MAX_IN, sizeof (float)),
-		   gr_make_io_signature (MIN_OUT, MAX_OUT, sizeof (float)))
+  : gr::sync_block ("queue_ff",
+		   gr::io_signature::make (MIN_IN, MAX_IN, sizeof (float)),
+		   gr::io_signature::make (MIN_OUT, MAX_OUT, sizeof (float)))
 {
   m_zeros = zeros;
 }

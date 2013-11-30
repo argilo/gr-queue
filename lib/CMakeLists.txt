@@ -23,7 +23,7 @@
 include(GrPlatform) #define LIB_SUFFIX
 
 add_library(gnuradio-argilo SHARED argilo_queue_ff.cc)
-target_link_libraries(gnuradio-argilo ${Boost_LIBRARIES} ${GRUEL_LIBRARIES} ${GNURADIO_CORE_LIBRARIES})
+target_link_libraries(gnuradio-argilo ${Boost_LIBRARIES} ${GNURADIO_CORE_LIBRARIES})
 set_target_properties(gnuradio-argilo PROPERTIES DEFINE_SYMBOL "gnuradio_argilo_EXPORTS")
 
 ########################################################################

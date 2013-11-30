@@ -23,7 +23,7 @@
 #define INCLUDED_ARGILO_QUEUE_FF_H
 
 #include <argilo_api.h>
-#include <gr_sync_block.h>
+#include <gnuradio/sync_block.h>
 #include <vector>
 #include <queue>
 using namespace std;
@@ -58,7 +58,7 @@ ARGILO_API argilo_queue_ff_sptr argilo_make_queue_ff (int zeros = 4000);
  *
  * This uses the preferred technique: subclassing gr_sync_block.
  */
-class ARGILO_API argilo_queue_ff : public gr_sync_block
+class ARGILO_API argilo_queue_ff : public gr::sync_block
 {
 private:
   // The friend declaration allows argilo_make_queue_ff to
