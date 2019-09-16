@@ -1,26 +1,7 @@
-# Copyright 2012-2014 Clayton Smith
-#
-# This file is part of gr-queue
-#
-# gr-queue is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 3, or (at your option)
-# any later version.
-#
-# gr-queue is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with gr-queue; see the file COPYING.  If not, write to
-# the Free Software Foundation, Inc., 51 Franklin Street,
-# Boston, MA 02110-1301, USA.
-
 gr-queue
 ========
 
-Author: Clayton Smith
+Author: Clayton Smith  
 Email: <argilo@gmail.com>
 
 When using GNU Radio to listen to trunked radio systems, one problem
@@ -49,7 +30,7 @@ Build instructions:
     sudo make install
     sudo ldconfig
 
-If your GNU Radio is installed in /usr (rather than /usr/local), then
+If your GNU Radio is installed in `/usr` (rather than `/usr/local`), then
 replace the first line above with:
 
     cmake -DCMAKE_INSTALL_PREFIX=/usr .
