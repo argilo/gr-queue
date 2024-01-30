@@ -30,11 +30,6 @@ Build instructions:
     sudo make install
     sudo ldconfig
 
-If your GNU Radio is installed in `/usr` (rather than `/usr/local`), then
-replace the first line above with:
-
-    cmake -DCMAKE_INSTALL_PREFIX=/usr .
-
 After running the above commands, "Queue" should appear under the
 "Operators" category in GNU Radio Companion, and "queue_ff" will be
 available in the "argilo" Python package.
